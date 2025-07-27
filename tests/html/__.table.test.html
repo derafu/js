@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Test __.table()</title>
+</head>
+<body>
+    <button id="generate-table">Generar Tabla</button>
+    <div id="table-container"></div>
+
+    <script src="../../src/utils.js"></script>
+    <script src="../../src/ui.js"></script>
+    <script src="../../src/tabs.js"></script>
+    <script src="../../src/form/validation.js"></script>
+    <script src="../../src/form/fields.js"></script>
+    <script src="../../src/form/tables.js"></script>
+    <script src="../../src/__.js"></script>
+    <script src="../../src/form.js"></script>
+    <script>
+        document.getElementById('generate-table').addEventListener('click', function() {
+            const titles = { col1: 'Columna 1', col2: 'Columna 2' };
+            const data = [{ col1: 'Dato 1-1', col2: 'Dato 1-2' }, { col1: 'Dato 2-1', col2: 'Dato 2-2' }];
+            const table = __.table(titles, data);
+            document.getElementById('table-container').innerHTML = '';
+            document.getElementById('table-container').appendChild(table);
+        });
+    </script>
+</body>
+</html>

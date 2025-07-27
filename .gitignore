@@ -1,7 +1,5 @@
-# PHP files and directories.
-var/
-vendor/
-composer.lock
+# Package files and directories.
+tests/node_modules/
 
 # Node.js and Vite build.
 node_modules/

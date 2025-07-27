@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Form.updateTablecheck()</title>
+    <script src="../../src/utils.js"></script>
+    <script src="../../src/ui.js"></script>
+    <script src="../../src/tabs.js"></script>
+    <script src="../../src/form/validation.js"></script>
+    <script src="../../src/form/fields.js"></script>
+    <script src="../../src/form/tables.js"></script>
+    <script src="../../src/__.js"></script>
+    <script src="../../src/form.js"></script>
+</head>
+<body>
+    <h2>Test Form.updateTablecheck()</h2>
+
+    <label for="categoriaSelect">Seleccione una categoría:</label>
+    <select id="categoriaSelect">
+        <option value="">Seleccione...</option>
+        <option value="categoria1">Categoría 1</option>
+        <option value="categoria2">Categoría 2</option>
+    </select>
+
+    <table id="opcionesTable">
+        <thead>
+            <tr>
+                <th>Opción</th>
+                <th>Seleccionar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Las filas se agregarán dinámicamente aquí -->
+        </tbody>
+    </table>
+
+    <button id="updateTable">Actualizar Tabla</button>
+
+    <script>
+        const opcionesTableData = {
+            categoria1: [{ id: '1', opcion: 'Opción 1' }, { id: '2', opcion: 'Opción 2' }],
+            categoria2: [{ id: '3', opcion: 'Opción 3' }, { id: '4', opcion: 'Opción 4' }]
+        };
+
+        document.getElementById('updateTable').addEventListener('click', function() {
+            const selectedCategory = document.getElementById('categoriaSelect').value;
+            Form.updateTablecheck('opcionesTable', 'opcionesCheckbox', opcionesTableData, selectedCategory, ['id'], ['opcion']);
+        });
+    </script>
+</body>
+</html>

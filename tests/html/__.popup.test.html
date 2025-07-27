@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Test __.popup()</title>
+</head>
+<body>
+    <button id="trigger-popup">Abrir Popup</button>
+
+    <script src="../../src/utils.js"></script>
+    <script src="../../src/ui.js"></script>
+    <script src="../../src/tabs.js"></script>
+    <script src="../../src/form/validation.js"></script>
+    <script src="../../src/form/fields.js"></script>
+    <script src="../../src/form/tables.js"></script>
+    <script src="../../src/__.js"></script>
+    <script src="../../src/form.js"></script>
+    <script>
+        document.getElementById('trigger-popup').addEventListener('click', function() {
+            __.popup('https://www.google.com', 400, 400, 'yes');
+        });
+    </script>
+</body>
+</html>

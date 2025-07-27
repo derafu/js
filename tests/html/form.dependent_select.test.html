@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Form.removeOptions() y Form.addOptions()</title>
+    <script src="../../src/utils.js"></script>
+    <script src="../../src/ui.js"></script>
+    <script src="../../src/tabs.js"></script>
+    <script src="../../src/form/validation.js"></script>
+    <script src="../../src/form/fields.js"></script>
+    <script src="../../src/form/tables.js"></script>
+    <script src="../../src/__.js"></script>
+    <script src="../../src/form.js"></script>
+</head>
+<body>
+    <h2>Test Form.removeOptions() y Form.addOptions()</h2>
+
+    <label for="selectPrimary">Seleccione una categoría:</label>
+    <select id="selectPrimary">
+        <option value="">Seleccione...</option>
+        <option value="categoria1">Categoría 1</option>
+        <option value="categoria2">Categoría 2</option>
+    </select>
+
+    <label for="selectSecondary">Opciones basadas en la categoría:</label>
+    <select id="selectSecondary"></select>
+
+    <button id="removeOptions">Limpiar Opciones</button>
+    <button id="addOptions">Agregar Opciones</button>
+
+    <script>
+        const opcionesListado = {
+            categoria1: [{ id: '1', glosa: 'Opción 1' }, { id: '2', glosa: 'Opción 2' }],
+            categoria2: [{ id: '3', glosa: 'Opción 3' }, { id: '4', glosa: 'Opción 4' }]
+        };
+
+        document.getElementById('selectPrimary').addEventListener('change', function() {
+            const seleccionada = this.value;
+            Form.removeOptions(document.getElementById('selectSecondary'));
+            Form.addOptions('selectSecondary', opcionesListado, seleccionada);
+        });
+
+        document.getElementById('removeOptions').addEventListener('click', function() {
+            Form.removeOptions(document.getElementById('selectSecondary'));
+        });
+
+        document.getElementById('addOptions').addEventListener('click', function() {
+            const seleccionada = document.getElementById('selectPrimary').value;
+            Form.removeOptions(document.getElementById('selectSecondary'));
+            Form.addOptions('selectSecondary', opcionesListado, seleccionada);
+        });
+    </script>
+</body>
+</html>

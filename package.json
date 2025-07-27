@@ -1,0 +1,47 @@
+{
+  "name": "derafu-js",
+  "version": "1.0.0",
+  "description": "Why use a JS framework if we can do all from scratch?",
+  "main": "src/derafu.js",
+  "files": [
+    "src/**/*.js",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix",
+    "lint:check": "eslint src/ --max-warnings=0",
+    "format": "prettier --write src/",
+    "format:check": "prettier --check src/",
+    "test": "jest --forceExit"
+  },
+  "keywords": [
+    "javascript",
+    "utility",
+    "library",
+    "forms",
+    "validation",
+    "ui"
+  ],
+  "author": "Derafu DEV",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/derafu/derafu-js.git"
+  },
+  "homepage": "https://github.com/derafu/derafu-js#readme",
+  "bugs": {
+    "url": "https://github.com/derafu/derafu-js/issues"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "prettier": "^3.2.5",
+    "jest": "^29.7.0",
+    "jest-puppeteer": "^10.1.4",
+    "puppeteer": "^24.15.0"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  }
+}

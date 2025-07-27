@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Form</title>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/6.0.0/bootbox.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/notyf/3.10.0/notyf.min.js" integrity="sha512-467grL09I/ffq86LVdwDzi86uaxuAhFZyjC99D6CC1vghMp1YAs+DqCgRvhEtZIKX+o9lR0F2bro6qniyeCMEQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/notyf/3.10.0/notyf.min.css" integrity="sha512-ZX18S8AwqoIm9QCd1EYun82IryFikdJt7lxj6583zx5Rvr5HoreO9tWY6f2VhSxvK+48vYFSf4zFtX/t2ge62g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.2.0/css/all.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdn.sasco.cl/js/datepicker/bootstrap-datepicker.js"></script>
+    <script src="https://cdn.sasco.cl/js/datepicker/bootstrap-datepicker.es.js"></script>
+    <link rel="stylesheet" href="https://cdn.sasco.cl/js/datepicker/datepicker3.css" />
+    <script src="../../src/utils.js"></script>
+    <script src="../../src/ui.js"></script>
+    <script src="../../src/validation/l10n-cl.js"></script>
+    <script src="../../src/tabs.js"></script>
+    <script src="../../src/form/validation.js"></script>
+    <script src="../../src/form/fields.js"></script>
+    <script src="../../src/form/tables.js"></script>
+    <script src="../../src/__.js"></script>
+    <script src="../../src/form.js"></script>
+</head>
+<body class="p-4">
+    <form action="https://jkorpela.fi/cgi-bin/echo.cgi" method="post" enctype="multipart/form-data" onsubmit="return Form.check()" id="formulario"  class="needs-validation form-horizontal" role="form">
+        <div class="mb-3 row">
+            <label for="divField" class="col-sm-2 col-form-label text-end">div</label>
+            <div class="col-sm-10"><div id="divField" class="">div</div></div>
+        </div>
+        <div class="mb-3 row">
+            <label for="text_optionalField" class="col-sm-2 col-form-label text-end">text_optional</label>
+            <div class="col-sm-10"><input type="text" name="text_optional" value="" id="text_optionalField" class=" form-control" placeholder=""    /></div>
+        </div>
+        <div class="mb-3 row">
+            <label for="text_growupField" class="col-sm-2 col-form-label text-end">text_growup</label>
+            <div class="col-sm-10"><input type="text" name="text_growup" value="" id="text_growupField" class=" form-control" placeholder=""  ondblclick="Form.growup(this)"  /></div>
+        </div>
+        <div class="mb-3 row required">
+            <label for="text_notemptyField" class="col-sm-2 col-form-label text-end"><span style="color:red"><strong>*</strong></span> Text NotEmpty</label>
+            <div class="col-sm-10"><input type="text" name="text_notempty" value="" id="text_notemptyField" class=" check notempty form-control" placeholder="Text NotEmpty"    /></div>
+        </div>
+        <div class="mb-3 row">
+            <label for="text_integerField" class="col-sm-2 col-form-label text-end">text_integer</label>
+            <div class="col-sm-10"><input type="text" name="text_integer" value="" id="text_integerField" class=" check integer form-control" placeholder=""    /></div>
+        </div>
+        <div class="mb-3 row">
+            <label for="text_realField" class="col-sm-2 col-form-label text-end">text_real</label>
+            <div class="col-sm-10"><input type="text" name="text_real" value="" id="text_realField" class=" check real form-control" placeholder=""    /></div>
+        </div>
+        <div class="mb-3 row required">
+            <label for="text_notempty_integerField" class="col-sm-2 col-form-label text-end"><span style="color:red"><strong>*</strong></span> text_notempty_integer</label>
+            <div class="col-sm-10"><input type="text" name="text_notempty_integer" value="" id="text_notempty_integerField" class=" check notempty integer form-control" placeholder=""    /></div>
+        </div>
+        <div class="mb-3 row required">
+            <label for="text_notempty_realField" class="col-sm-2 col-form-label text-end"><span style="color:red"><strong>*</strong></span> text_notempty_real</label>
+            <div class="col-sm-10"><input type="text" name="text_notempty_real" value="" id="text_notempty_realField" class=" check notempty real form-control" placeholder=""    /></div>
+        </div>
+        <div class="mb-3 row">
+            <label for="text_emailField" class="col-sm-2 col-form-label text-end">text_email</label>
+            <div class="col-sm-10"><input type="text" name="text_email" value="" id="text_emailField" class=" check email form-control" placeholder=""    /></div>
+        </div>
+        <div class="mb-3 row">
+            <label for="text_emailsField" class="col-sm-2 col-form-label text-end">text_emails</label>
+            <div class="col-sm-10"><input type="text" name="text_emails" value="" id="text_emailsField" class=" check emails form-control" placeholder=""    /></div>
+        </div>
+        <div class="mb-3 row">
+            <label for="dateField" class="col-sm-2 col-form-label text-end">date</label>
+            <div class="col-sm-10"><script>$(function() { $("#dateField").datepicker({'format':'yyyy-mm-dd','weekStart':1,'todayBtn':'linked','language':'es','todayHighlight':true,'orientation':'auto'}); }); </script><input type="text" name="date" value="" id="dateField" class=" check date form-control" placeholder=""  autocomplete="off" /></div>
+        </div>
+        <div class="mb-3 row">
+            <label for="text_telephoneField" class="col-sm-2 col-form-label text-end">text_telephone</label>
+            <div class="col-sm-10"><input type="text" name="text_telephone" value="" id="text_telephoneField" class=" check telephone form-control" placeholder=""    /></div>
+        </div>
+        <div class="mb-3 row">
+            <label for="text_rutField" class="col-sm-2 col-form-label text-end">text_rut</label>
+            <div class="col-sm-10"><input type="text" name="text_rut" value="" id="text_rutField" class=" check rut form-control" placeholder=""    /></div>
+        </div>
+        <div class="mb-3 row">
+            <label for="passwordField" class="col-sm-2 col-form-label text-end">password</label>
+            <div class="col-sm-10"><div class="input-group"><input type="password" name="password" value="" class=" form-control" placeholder=""   id="passwordField" autocomplete="off" /><a class="input-group-text" style="cursor:pointer;text-decoration:none" onclick="Form.showPassword(this)"><i class="fa-regular fa-eye fa-fw"></i></a><a class="input-group-text" style="cursor:pointer;text-decoration:none" onclick="__.copy(this.parentNode.querySelector('input').value, 'Valor del campo &quot;password\&quot; copiado.')"><i class="fa-regular fa-copy fa-fw"></i></a></div></div>
+        </div>
+        <div class="mb-3 row required">
+            <label for="password_notemptyField" class="col-sm-2 col-form-label text-end"><span style="color:red"><strong>*</strong></span> password_notempty</label>
+            <div class="col-sm-10"><div class="input-group"><input type="password" name="password_notempty" value="" class=" check notempty form-control" placeholder=""   id="password_notemptyField" autocomplete="off" /><a class="input-group-text" style="cursor:pointer;text-decoration:none" onclick="Form.showPassword(this)"><i class="fa-regular fa-eye fa-fw"></i></a><a class="input-group-text" style="cursor:pointer;text-decoration:none" onclick="__.copy(this.parentNode.querySelector('input').value, 'Valor del campo &quot;password_notempty\&quot; copiado.')"><i class="fa-regular fa-copy fa-fw"></i></a></div></div>
+        </div>
+        <div class="mb-3 row">
+            <label for="textareaField" class="col-sm-2 col-form-label text-end">textarea</label>
+            <div class="col-sm-10"><textarea name="textarea" rows="5" cols="10" id="textareaField" class=" form-control" placeholder=""  ></textarea></div>
+        </div>
+        <div class="mb-3 row">
+            <label for="checkboxField" class="col-sm-2 col-form-label text-end">checkbox</label>
+            <div class="col-sm-10"><input type="checkbox" name="checkbox" value="" id="checkboxField" class=""  /></div>
+        </div>
+        <div class="mb-3 row required">
+            <label for="checkbox_notemptyField" class="col-sm-2 col-form-label text-end"><span style="color:red"><strong>*</strong></span> checkbox_notempty</label>
+            <div class="col-sm-10"><input type="checkbox" name="checkbox_notempty" value="" id="checkbox_notemptyField" class=" check notempty"  /></div>
+        </div>
+        <div class="mb-3 row">
+            <label for="checkboxesField" class="col-sm-2 col-form-label text-end">checkboxes</label>
+            <div class="col-sm-10"><input type="checkbox" name="checkboxes[]" value="o1" class="" /> Option 1<br/><input type="checkbox" name="checkboxes[]" value="o2" class="" /> Option 2 <div class="form-text text-muted" id="checkboxesFieldHelp">Ayuda estándar de checkboxes.</div></div>
+        </div>
+        <div class="mb-3 row">
+            <label for="filesField" class="col-sm-2 col-form-label text-end">files</label>
+            <div class="col-sm-10"><script> window["inputsJS_filesField"] = '<tr><td><div><input type="file" name="files[]" class="form-control" /></div></td><td><a class="filesField_eliminar btn btn-danger btn-sm" href="" onclick="Form.delJS(this); return false" title="Eliminar fila"><i class="fa-solid fa-times fa-fw"></i></a></td></tr>'; </script><table class="table table-striped" id="filesField" style="width:100%"><thead><tr><th>files</th><th style="width:1px;"><a href="javascript:Form.addJS('filesField', undefined, undefined)" title="Agregar fila [+]" accesskey="+" class="btn btn-primary btn-sm"><i class="fa-solid fa-plus fa-fw"></i></a></th></tr></thead><tbody><tr><td><div><input type="file" name="files[]" class="form-control" /></div></td><td><a class="filesField_eliminar btn btn-danger btn-sm" href="" onclick="Form.delJS(this); return false" title="Eliminar fila"><i class="fa-solid fa-times fa-fw"></i></a></td></tr></tbody></table></div>
+        </div>
+        <div class="mb-3 row">
+            <label for="booleanField" class="col-sm-2 col-form-label text-end">boolean</label>
+            <div class="col-sm-10"><script>$(function() { $("#booleanField").select2({'theme':'bootstrap-5','width':'100%'}); }); </script><select name="boolean" id="booleanField" class=" form-control" ><option value="0">No</option><option value="1">Si</option></select></div>
+        </div>
+        <div class="mb-3 row">
+            <label for="selectField" class="col-sm-2 col-form-label text-end">select</label>
+            <div class="col-sm-10"><script>$(function() { $("#selectField").select2({'theme':'bootstrap-5','width':'100%'}); }); </script><select name="select" id="selectField" class=" form-control" ><option value="o1">Option 1</option><option value="o2">Option 2</option></select></div>
+        </div>
+        <div class="mb-3 row">
+            <label for="select_multipleField" class="col-sm-2 col-form-label text-end">select_multiple</label>
+            <div class="col-sm-10"><script>$(function() { $("#select_multipleField").select2({'theme':'bootstrap-5','width':'100%'}); }); </script><select name="select_multiple[]" id="select_multipleField" class=" form-control" multiple="multiple" size="1" ><option value="o1" selected="selected">Option 1</option><option value="o2" selected="selected">Option 2</option></select></div>
+        </div>
+        <div class="mb-3 row required">
+            <label for="select_notemptyField" class="col-sm-2 col-form-label text-end"><span style="color:red"><strong>*</strong></span> select_notempty</label>
+            <div class="col-sm-10"><script>$(function() { $("#select_notemptyField").select2({'theme':'bootstrap-5','width':'100%'}); }); </script><select name="select_notempty" id="select_notemptyField" class=" check notempty form-control" ><option value=""></option><option value="o1">Option 1</option><option value="o2">Option 2</option></select></div>
+        </div>
+        <div class="mb-3 row">
+            <label for="radiosField" class="col-sm-2 col-form-label text-end">radios</label>
+            <div class="col-sm-10"><input type="radio" name="radios" value="o1" > Option 1<br/><input type="radio" name="radios" value="o2" > Option 2</div>
+        </div>
+        <div class="mb-3 row">
+            <label for="jsField" class="col-sm-2 col-form-label text-end">js</label>
+            <div class="col-sm-10"><script> window["inputsJS_jsField"] = '<tr><td><div><input type="text" name="js_text[]" value="" class=" form-control" placeholder=""    /></div></td><td><div><input type="text" name="js_text_notempty[]" value="" class=" check check notempty form-control" placeholder=""    /></div></td><td><div><div class="input-group"><input type="password" name="js_password[]" value="" class=" form-control" placeholder=""    autocomplete="off" /><a class="input-group-text" style="cursor:pointer;text-decoration:none" onclick="Form.showPassword(this)"><i class="fa-regular fa-eye fa-fw"></i></a><a class="input-group-text" style="cursor:pointer;text-decoration:none" onclick="__.copy(this.parentNode.querySelector(\'input\').value, \'Valor del campo &quot;js_password[]\&quot; copiado.\')"><i class="fa-regular fa-copy fa-fw"></i></a></div></div></td><td><div><input type="file" name="js_file[]" class="form-control" /></div></td><td><a class="jsField_eliminar btn btn-danger btn-sm" href="" onclick="Form.delJS(this); return false" title="Eliminar fila"><i class="fa-solid fa-times fa-fw"></i></a></td></tr>'; </script><table class="table table-striped" id="jsField" style="width:100%"><thead><tr><th>Text</th><th>Text NotEmpty</th><th>Password</th><th>File</th><th style="width:1px;"><a href="javascript:Form.addJS('jsField', undefined, undefined)" title="Agregar fila [+]" accesskey="+" class="btn btn-primary btn-sm"><i class="fa-solid fa-plus fa-fw"></i></a></th></tr></thead><tbody><tr><td><div><input type="text" name="js_text[]" value="" class=" form-control" placeholder=""    /></div></td><td><div><input type="text" name="js_text_notempty[]" value="" class=" check check notempty form-control" placeholder=""    /></div></td><td><div><div class="input-group"><input type="password" name="js_password[]" value="" class=" form-control" placeholder=""    autocomplete="off" /><a class="input-group-text" style="cursor:pointer;text-decoration:none" onclick="Form.showPassword(this)"><i class="fa-regular fa-eye fa-fw"></i></a><a class="input-group-text" style="cursor:pointer;text-decoration:none" onclick="__.copy(this.parentNode.querySelector('input').value, 'Valor del campo &quot;js_password[]\&quot; copiado.')"><i class="fa-regular fa-copy fa-fw"></i></a></div></div></td><td><div><input type="file" name="js_file[]" class="form-control" /></div></td><td><a class="jsField_eliminar btn btn-danger btn-sm" href="" onclick="Form.delJS(this); return false" title="Eliminar fila"><i class="fa-solid fa-times fa-fw"></i></a></td></tr></tbody></table></div>
+        </div>
+        <div class="mb-3 row">
+            <label for="tablecheckField" class="col-sm-2 col-form-label text-end">tablecheck</label>
+            <div class="col-sm-10"><table id="tablecheckField" class="table table-striped" style="width:100%"><thead><tr><th>T1</th><th>T2</th><th><input type="checkbox" checked="checked" onclick="Form.checkboxesSet('tablecheck', this.checked)"/></th></tr></thead><tbody><tr><td>V1A</td><td>V1B</td><td style="width:1px"><input type="checkbox" name="tablecheck[]" value="K1" checked="checked" /></td></tr><tr><td>V2A</td><td>V2B</td><td style="width:1px"><input type="checkbox" name="tablecheck[]" value="K2" checked="checked" /></td></tr><tr><td>V3A</td><td>V3B</td><td style="width:1px"><input type="checkbox" name="tablecheck[]" value="K3" checked="checked" /></td></tr><tr><td>V4A</td><td>V4B</td><td style="width:1px"><input type="checkbox" name="tablecheck[]" value="K4" checked="checked" /></td></tr></tbody></table></div>
+        </div>
+        <div class="mb-3 row">
+            <label for="tableradiosField" class="col-sm-2 col-form-label text-end">tableradios</label>
+            <div class="col-sm-10"><table id="tableradiosField" class="table table-striped" style="width:100%"><thead><tr><th>T1</th><th>T2</th><th><div><span>O1</span></div></th><th><div><span>O2</span></div></th><th><div><span>O3</span></div></th></tr></thead><tbody><tr><td>V1A</td><td>V1B</td><td><input type="radio" name="tableradios_K1" value="o1" /></td><td><input type="radio" name="tableradios_K1" value="o2" /></td><td><input type="radio" name="tableradios_K1" value="o3" /></td></tr><tr><td>V2A</td><td>V2B</td><td><input type="radio" name="tableradios_K2" value="o1" /></td><td><input type="radio" name="tableradios_K2" value="o2" /></td><td><input type="radio" name="tableradios_K2" value="o3" /></td></tr><tr><td>V3A</td><td>V3B</td><td><input type="radio" name="tableradios_K3" value="o1" /></td><td><input type="radio" name="tableradios_K3" value="o2" /></td><td><input type="radio" name="tableradios_K3" value="o3" /></td></tr><tr><td>V4A</td><td>V4B</td><td><input type="radio" name="tableradios_K4" value="o1" /></td><td><input type="radio" name="tableradios_K4" value="o2" /></td><td><input type="radio" name="tableradios_K4" value="o3" /></td></tr></tbody></table></div>
+        </div>
+        <div class="mb-3 row">
+            <div class="mt-2 offset-sm-2 col-sm-10"><button type="submit" name="submit" id="submitField" class=" btn btn-primary" >Enviar</button></div>
+        </div>
+    </form>
+</body>
+</html>
