@@ -54,6 +54,9 @@ Tabs.init = function () {
         });
     });
 
+    // Inject animation styles for deeplink highlighting.
+    Tabs._injectStyles();
+
     // Add magic links, modal button actions, and form elements within tabs.
     for (const tabPane of document.querySelectorAll('div.tab-pane')) {
         if (tabPane.id) {
@@ -76,6 +79,58 @@ Tabs.init = function () {
             });
         }
     }, true);*/
+};
+
+/**
+ * Injects the CSS keyframe animation for deeplink highlighting once into the
+ * document head. Uses Bootstrap CSS variables so colors adapt to any theme.
+ *
+ * @returns {void}
+ */
+Tabs._injectStyles = function () {
+    'use strict';
+    if (document.getElementById('derafu-tabs-styles')) return;
+    const style = document.createElement('style');
+    style.id = 'derafu-tabs-styles';
+    style.textContent =
+        '@keyframes deeplink-pulse {' +
+        '0% { box-shadow: 0 0 0 4px rgba(var(--bs-primary-rgb), 0.5); }' +
+        '100% { box-shadow: 0 0 0 0 rgba(var(--bs-primary-rgb), 0); }' +
+        '}' +
+        '.deeplink-highlight {' +
+        'animation: deeplink-pulse 2s ease-out forwards;' +
+        '}';
+    document.head.appendChild(style);
+};
+
+/**
+ * Highlights an element using a pulse animation. For cards the element itself
+ * is targeted; for form elements the nearest Bootstrap container is used
+ * (.input-group > .form-floating > parentElement) so that prepend/append
+ * addons and floating labels are included in the visual feedback.
+ * The highlight class is removed automatically when the animation ends.
+ *
+ * @param {HTMLElement} element - The element to highlight.
+ * @param {boolean} isCard - Whether the element is a card.
+ * @returns {void}
+ */
+Tabs._highlightElement = function (element, isCard) {
+    'use strict';
+    const target = isCard
+        ? element
+        : element.closest('.input-group') ||
+          element.closest('.form-floating') ||
+          element.parentElement;
+    if (!target) return;
+    if (isCard) target.classList.add('border-primary');
+    target.classList.add('deeplink-highlight');
+    target.addEventListener(
+        'animationend',
+        function () {
+            target.classList.remove('deeplink-highlight', 'border-primary');
+        },
+        { once: true },
+    );
 };
 
 /**
@@ -115,7 +170,7 @@ Tabs.handleTabDeeplink = function (tabElement, elementId) {
         `${tabElement_id}_${elementId}-card`,
     );
     if (cardElement) {
-        cardElement.classList.add('deeplink', 'border', 'border-danger');
+        Tabs._highlightElement(cardElement, true);
         typeof UI !== 'undefined'
             ? UI.scroll(cardElement)
             : cardElement.scrollIntoView({ behavior: 'smooth' });
@@ -133,21 +188,9 @@ Tabs.handleTabDeeplink = function (tabElement, elementId) {
             }
             modalInstance.show();
         }
-        // If it's a select (including select2), apply border and scroll.
-        else if (
-            element.tagName.toLowerCase() === 'select' &&
-            element.dataset.select2Id
-        ) {
-            element.parentElement
-                .querySelector('span.select2-selection')
-                .classList.add('deeplink', 'border', 'border-danger');
-            typeof UI !== 'undefined'
-                ? UI.scroll(element)
-                : element.scrollIntoView({ behavior: 'smooth' });
-        }
-        // If it's not a modal or select2, apply border and scroll.
+        // If it's a form element, highlight its container and scroll.
         else {
-            element.classList.add('deeplink', 'border', 'border-danger');
+            Tabs._highlightElement(element, false);
             typeof UI !== 'undefined'
                 ? UI.scroll(element)
                 : element.scrollIntoView({ behavior: 'smooth' });
@@ -258,12 +301,9 @@ Tabs.deeplink = function (deeplink) {
               history.replaceState(null, null, url);
           })();
 
-    // Clean the deeplink selection class in case they exist.
-    // This ensures that only one "marked" element exists at the same time.
-    for (const element of document.querySelectorAll(
-        '.deeplink.border.border-danger',
-    )) {
-        element.classList.remove('deeplink', 'border', 'border-danger');
+    // Cancel any in-progress highlight so only one marked element exists at a time.
+    for (const element of document.querySelectorAll('.deeplink-highlight')) {
+        element.classList.remove('deeplink-highlight', 'border-primary');
     }
 
     // Handle opening tabs based on URL.
