@@ -1,10 +1,10 @@
 const path = require('path');
 
-describe('__.tabs()', () => {
+describe('__.tabs() with <button> nav links', () => {
   let baseUrl;
 
   beforeAll(async () => {
-    const absolutePath = path.join(__dirname, '../html/__.tabs.test.html');
+    const absolutePath = path.join(__dirname, '../html/__.tabs-button.test.html');
     const url = `file://${absolutePath}`;
     await page.goto(url);
     baseUrl = page.url().split('#')[0];
