@@ -29,7 +29,9 @@ Tabs.init = function () {
     'use strict';
 
     // Open the first tab by default.
-    const firstTabLink = document.querySelector('.nav-tabs [data-bs-toggle="tab"]');
+    const firstTabLink = document.querySelector(
+        '.nav-tabs [data-bs-toggle="tab"]',
+    );
     if (firstTabLink) {
         new bootstrap.Tab(firstTabLink).show();
     }
@@ -41,8 +43,13 @@ Tabs.init = function () {
     const tabLinks = document.querySelectorAll('[data-bs-toggle="tab"]');
     tabLinks.forEach(tabLink => {
         tabLink.addEventListener('click', function () {
-            const tabId = tabLink.getAttribute('aria-controls')
-                || (tabLink.getAttribute('data-bs-target') || tabLink.getAttribute('href') || '').replace('#', '');
+            const tabId =
+                tabLink.getAttribute('aria-controls') ||
+                (
+                    tabLink.getAttribute('data-bs-target') ||
+                    tabLink.getAttribute('href') ||
+                    ''
+                ).replace('#', '');
             Tabs.deeplink(tabId);
         });
     });
