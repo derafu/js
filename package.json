@@ -28,11 +28,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/derafu/derafu-js.git"
+    "url": "git+https://github.com/derafu/js.git"
   },
-  "homepage": "https://github.com/derafu/derafu-js#readme",
+  "homepage": "https://github.com/derafu/js#readme",
   "bugs": {
-    "url": "https://github.com/derafu/derafu-js/issues"
+    "url": "https://github.com/derafu/js/issues"
   },
   "devDependencies": {
     "eslint": "^8.57.0",
