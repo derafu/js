@@ -89,7 +89,9 @@ Tabs.init = function () {
  */
 Tabs._injectStyles = function () {
     'use strict';
-    if (document.getElementById('derafu-tabs-styles')) return;
+    if (document.getElementById('derafu-tabs-styles')) {
+        return;
+    }
     const style = document.createElement('style');
     style.id = 'derafu-tabs-styles';
     style.textContent =
@@ -121,8 +123,12 @@ Tabs._highlightElement = function (element, isCard) {
         : element.closest('.input-group') ||
           element.closest('.form-floating') ||
           element.parentElement;
-    if (!target) return;
-    if (isCard) target.classList.add('border-primary');
+    if (!target) {
+        return;
+    }
+    if (isCard) {
+        target.classList.add('border-primary');
+    }
     target.classList.add('deeplink-highlight');
     target.addEventListener(
         'animationend',
