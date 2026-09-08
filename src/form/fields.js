@@ -85,6 +85,52 @@ FormFields.showPassword = function (button) {
 };
 
 /**
+ * Fills the password field next to the button with a randomly generated
+ * password.
+ *
+ * Relies on Utils.generatePassword() to create the value, so utils.js must
+ * be loaded before this file for this function to work.
+ *
+ * @param {HTMLElement} button - Button used to activate the function, located
+ * next to the password field.
+ * @param {number} [length] - Length of the generated password. Default is 12
+ * (see Utils.generatePassword()).
+ * @returns {void}
+ */
+FormFields.generatePassword = function (button, length) {
+    'use strict';
+    if (!(button instanceof HTMLElement)) {
+        console.error(
+            'FormFields.generatePassword: The provided argument is not a valid HTML element.',
+        );
+        return;
+    }
+    if (
+        typeof Utils === 'undefined' ||
+        typeof Utils.generatePassword !== 'function'
+    ) {
+        console.error(
+            'FormFields.generatePassword: Utils.generatePassword() is not available. Make sure utils.js is loaded before this file.',
+        );
+        return;
+    }
+
+    // Try to find the related password field.
+    const input = button
+        .closest('.input-group')
+        .querySelector('input[type="password"], input[type="text"]');
+
+    if (!input) {
+        console.error('FormFields.generatePassword: Input not found.');
+        return;
+    }
+
+    // Fill the field and notify listeners (e.g. validation) of the change.
+    input.value = Utils.generatePassword(length);
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+};
+
+/**
  * Allows editing the content of a text field in a larger dialog box.
  * Useful for text fields with extensive content that would benefit from an
  * expanded view.

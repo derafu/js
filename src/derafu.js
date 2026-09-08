@@ -134,6 +134,11 @@ if (typeof Form !== 'undefined') {
     }
 }
 
+// Make derafu available globally for browser usage.
+if (typeof window !== 'undefined') {
+    window.derafu = derafu;
+}
+
 // Export module for use in Node.js.
 if (typeof module === 'object' && module.exports) {
     module.exports = derafu;
