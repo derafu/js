@@ -1,6 +1,6 @@
 {
   "name": "derafu-js",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Why use a JS framework if we can do all from scratch?",
   "main": "src/derafu.js",
   "files": [
